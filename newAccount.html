@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Skapa konto:
+    <form action="newAccount.php" method="get">
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Användarnamn" />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Lösenord" />
+      <input
+        type="password"
+        id="password_rep"
+        name="password_rep"
+        placeholder="Repetera Lösenord" />
+      <!-- <input type="submit" name="submit" value="Skapa konto" /> -->
+    </form>
+    <button type="button" onclick="checkCorrectFormat()">Skapa konto</button>
+    <div id="status"></div>
+  </body>
+  <script>
+    function checkCorrectFormat() {
+      let username = document.getElementById("username").value;
+      let password = document.getElementById("password").value;
+      let password_rep = document.getElementById("password_rep").value;
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        return_status = this.responseText;
+        if (return_status != "username_free") {
+          document.getElementById("status").innerHTML = return_status;
+        } else if (username == "") {
+          document.getElementById("status").innerHTML =
+            "Du måste ha ett användarnamn";
+        } else if (password == "") {
+          document.getElementById("status").innerHTML =
+            "Du måste ha ett lösenord";
+        } else if (password != password_rep) {
+          document.getElementById("status").innerHTML =
+            "Lösenorden du skrev in måste matcha";
+        } else {
+          createAccount();
+        }
+      };
+      xhttp.open(
+        "GET",
+        "checkNewAccountCorrectFormat.php?username=" + username,
+        true
+      );
+      xhttp.send();
+    }
+
+    function createAccount() {
+      let username = document.getElementById("username").value;
+      let password = document.getElementById("password").value;
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        if (this.responseText == "success") {
+          window.location.replace("index.html");
+        }
+      };
+      xhttp.open(
+        "GET",
+        "newAccount.php?username=" + username + "&pass=" + password,
+        true
+      );
+      xhttp.send();
+    }
+  </script>
+</html>
