@@ -20,13 +20,18 @@ if ($result->num_rows > 0) {
 			}
 	}
 } else {
-    echo "Failed to log in :(";
+    failedLogin(); 
 }
 
 if (!$login_success) {
-    echo "Failed to log in :("; 
+    failedLogin(); 
 }
 $conn->close();
+
+function failedLogin() {
+    echo "Failed to log in :(";
+	echo "<br><br><a href='index.html'>Tillbaka till inlogg</a>";
+}
 
 if($login_success) {
 	session_start();
