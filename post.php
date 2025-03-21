@@ -46,7 +46,7 @@ if (isset($_GET["title"])) {
                     <body>
                         <form action='forums.php' method='post'>
                             <input type='submit' value='Till startsidan'>
-                        </form>    
+                        </form>  <br>  
                     ";
         echo $row["creator"] . " la upp " . $row["title"] . ": ";
         echo $row["text"]; ?>

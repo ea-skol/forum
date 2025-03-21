@@ -12,5 +12,6 @@
             <input type="text" name="text" placeholder="Text">
             <input type="submit" name="submit" value="Skapa inlägg">
         </form>
+        <a href="forums.php">Avrbyt</a>
     </body>
 </html>
