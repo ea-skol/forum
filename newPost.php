@@ -6,6 +6,7 @@
 ?>
 
 <html>
+    <title>Skapa inlägg</title>
     <body>
         <form action="post.php" method="get">
             <input type="text" name="title" placeholder="Titel">

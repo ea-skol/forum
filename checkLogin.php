@@ -29,6 +29,7 @@ if (!$login_success) {
 $conn->close();
 
 function failedLogin() {
+	echo "<title>Inloggning misslyckades :(</title>";
     echo "Inloggning misslyckades :(";
 	echo "<br><br><a href='index.html'>Tillbaka till inlogg</a>";
 }
